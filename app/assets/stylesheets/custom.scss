@@ -32,17 +32,21 @@ header{
 	background-color: $blueish;
 	
 	
-	a{	
-		color: black !important;
+	ul li a{	
+		
 		
 		border-radius: 10px;
 		
 		font-weight:bold;
 		
 		&:hover{
-			color: #777 !important;
+			color: #777;
 		}
 	}
+}
+
+.navbar-nav a{
+	color: black !important;
 }
 
 #logo {
@@ -57,6 +61,7 @@ header{
   &:hover {
     color: white;
     text-decoration: none;
+	cursor: pointer;
   }
 }
 
