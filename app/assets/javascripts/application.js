@@ -13,5 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require Chart.bundle.min
+//= require Chart.min
+//= require math.min
+//= require jquery-readyselector
 //= require_tree .
