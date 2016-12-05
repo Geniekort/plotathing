@@ -96,7 +96,7 @@ $(".static_pages.plotter").ready(function(){
 	});
 	
 	//update tick
-	$("#usrXtick").change(function(){
+	$("#usrXtick").on('input', function(){
 		xtick = parseFloat($(this).val());
 		if(xtick == 0){
 			xtick = 1;

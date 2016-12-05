@@ -16,4 +16,5 @@
 //= require Chart.min
 //= require math.min
 //= require jquery-readyselector
+//= require bootstrap-sprockets
 //= require_tree .
