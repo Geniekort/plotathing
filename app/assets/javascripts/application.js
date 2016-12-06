@@ -11,10 +11,12 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
+// require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
 //= require Chart.min
 //= require math.min
 //= require jquery-readyselector
 //= require bootstrap-sprockets
+// require turbolinks
 //= require_tree .

@@ -1,2 +1,73 @@
-<h1>About</h1>
-<p>The information on this app goes here</p>
+<div class="col-md-12">
+		<h1>About</h1>
+	</div>
+</div> <!-- .row -->
+
+<div class="row">
+	<div class="col-md-6">
+		<h2>Intro</h2>
+		<p>This webapp is created for the subject Web Technology at the TU/e. The purpose of this assignment was to create an interactive webapp. This resulted in a plotter app. On this page you can read more about how to use this basic app.</p>
+	</div>
+	
+	<div class="col-md-6 purple">
+		<h2>Usage</h2>
+		<ul>
+			<li><p>Enter a formula</p></li>
+			<li><p>Enter a domain for your x</p></li>
+			<li><p>Enter a tick (step size)</p></li>
+			<li><p>Enjoy your graph!</p></li>
+		</ul>
+	</div>
+	
+</div>
+
+<div class="row">
+	<div class="col-md-6 purple">
+		<h2>Formulas</h2>
+		<p>Plot-A-Thing uses polynomials over x to create a graph. To interpret the input polynomial the plugin uses some plugins. This gives some constraints. For a list of all allowed functions and operations, please have a look into the "Functions" sections. Note that you are only allowed to use x as a variable, any other letter will result in an error.</p>
+	</div>
+	
+	<div class="col-md-6 ">
+		<h2>Domain</h2>
+		<p>You can set the domain by entering a lower bound (Xmin), an upper bound (Xmax) and a step size (Xtick).</p>
+		<p>Even though it might be obvious, Always make sure that Xmax > Xmin, and that Xtick > 0. You can use decimals, use a '.' as separator.</p>
+	</div>
+	
+</div>
+<div class="row">
+	<div class="col-md-6 ">
+		<h2>Functions</h2>
+		<p>Plot-A-Thing can handle the following functions and operations:</p>
+		<ul class="col-md-6" >
+			<li>x*x - Multiplication</li>
+			<li>x+x - Addition</li>
+			<li>x-x - Subtraction</li>
+			<li>x/x - Division</li>
+			<li>x^x - Powers</li>
+			<li>x%x - Modulus</li>
+			<li>log(x) - Logarithm</li>
+		</ul>
+		<ul class="col-md-6" >
+			<li>sin(x) - Sine</li>
+			<li>cos(x) - Cosine</li>
+			<li>tan(x) - Tangens</li>
+			<li>abs(x) - Absolute value</li>
+			<li>floor(x) - Round to lower integer</li>
+			<li>ceil(x) - Round to upper integer</li>
+		</ul>
+		<div class="clearfix"></div>
+		<p >Note that all but only these functions are tested and can be assumed to work.</p>
+	</div>
+	
+	<div class="col-md-6 purple">
+		<h2>Credits</h2>
+		<p>Plot-A-Thing is build with help of the following frameworks and plugins:</p>
+		<%= link_to image_tag("bootstrap", :class => "creditsImg"), "http://www.getbootstrap.com", :target => "_blank" %>
+		<%= link_to image_tag("rails",:class => "creditsImg") , "http://rubyonrails.org", :target => "_blank"%>
+		<%= link_to image_tag("mathjs", :class => "creditsImg"), "http://mathjs.org", :target => "_blank"%>
+		<%= link_to image_tag("chartjs",:class => "creditsImg"), "http://chartjs.org", :target => "_blank"%>
+		<div class="clearfix"></div>
+		<p>Feel free to visit the sites of these plugins by clicking on their logo</p>
+		<p
+	</div>
+	

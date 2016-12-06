@@ -1,16 +1,19 @@
-$(".static_pages.plotter").ready(function(){
-	
-	
+$(function(){if($("body").hasClass("plotter")){
+	/* initialization of variables */
 	var j = 0;
-	var xmin = -10, xmax = 10, xtick = 1, formula = "0";
+	
+	var xmin = -10, xmax = 10, xtick = 1, realXtick = xtick, formula = "x^2";
+	var maxNrPoints = 250;
+	
 	var canvas = document.getElementById('myChart'),
-	ctx = canvas.getContext('2d'),
-	xPoints = [],
+	ctx = canvas.getContext('2d');
+	
+	var xPoints = [],
 	yPoints = getScopeRange(-10,10,1),
 	data = {
 		labels : yPoints,
 		datasets: [{
-            label: "My First dataset",
+            label: formula,
             fill: false,
             lineTension: 0.1,
             backgroundColor: "rgba(75,192,192,0.4)",
@@ -21,50 +24,68 @@ $(".static_pages.plotter").ready(function(){
         }]
 	},
 	options ={		
-        
-	}
+        hover: {
+            // Overrides the global setting
+            mode: 'x'
+        }
+	};
 	
 	var plot = new Chart(ctx, {
 		type: 'line',
 		data: data,
-		options: options
+		options: {		
+			title: {
+				display: true,
+				text: 'Plot'
+			},
+			
+			maintainAspectRatio : true
+	}
 	});
 
+	var inputXmin = $("#usrXmin"),
+	inputXmax = $("#usrXmax"),
+	inputXtick = $("#usrXtick"),
+	inputFormul = $("#usrFormula");
+
+	inputXmin.val(xmin);
+	inputXmax.val(xmax);
+	inputXtick.val(xtick);
+	inputFormul.val(formula);
 	
-	//Bind the change of formula/polynomial input to change of graph
-	$("#usrFormula").change(function updatePlotter(){
-		formula = this.value;
-		if(true){
-			$(this).css("box-shadow", "none");
-			
-			updatePlot();
-			
-			
-		}else{
-			$(this).css("box-shadow", "0px 0px 5px 5px rgba(200,0,0,0.75)");
-		}
-	});
+	updatePlot();
+	
+	
+	
+	/* Functions defined below */
 	
 	function updatePlot(){
+		
+		if(!checkFormula(formula)){
+			inputFormul.effect("shake", {times:2, distance: 10, direction: 'right'});
+			return;
+		}
+		
 		updateScope();
 		plot.data.datasets[0].data = newValues(formula);
+		plot.data.datasets[0].label = formula;
 		plot.update(); 
 		
 	}
 	
 	// Function to update the scope of the graph
 	function updateScope(){
-		plot.data.labels = getScopeRange(xmin, xmax, xtick);
+		plot.data.labels = getScopeRange();
 	}
 	
 	//Get the range from the xmin and xmax as an array
-	function getScopeRange(ixmin, ixmax, ixtick){
-		
+	function getScopeRange(){
+		updateTick();
+		console.log(xtick);
 		var list = [];
-		for(var i = ixmin; i <= ixmax; i += ixtick) {
+		for(var i = xmin; i <= xmax; i += xtick) {
 			list.push(+i.toPrecision(5));
 		}
-		var i = xmin;
 		
 		
 		return list;
@@ -82,28 +103,105 @@ $(".static_pages.plotter").ready(function(){
 		return newData;
 	}
 	
+	/* Change layout to (in)validate element*/
+	function validate(el, val){
+		if(!val){
+			el.css("box-shadow", "0px 0px 5px 5px rgba(200,0,0,0.75)");
+		}else{
+			el.css("box-shadow", "none");
+		}
+	}
+	
+	/* Function to check validity of formula */
+	function checkFormula(f){
+		try{
+			math.eval(f, {x:1});
+			return true;
+		}catch(err){
+			return false;
+		}
+	}
+	
+	/* Update Tick */
+	
+	function updateTick(){
+		
+		xtick = realXtick;
+		
+		if(!checkTick()){ //  Check number of nodes
+			xtick = Math.ceil((xmax-xmin) / maxNrPoints);
+		}
+		
+		
+		
+	}
+	
+	/* Function to check and FIX xtick */
+	function checkTick(){
+		nrpoints = (xmax - xmin) / xtick;
+		if(nrpoints > maxNrPoints ){
+			return false;
+		}else{
+			return true;
+		}
+	}
+	
+	/* Function to check range */
+	
+	function validateRange(){
+		var outcome = (xmax > xmin);
+		validate(inputXmax, outcome);
+		validate(inputXmin, outcome);
+		return outcome;
+		
+	}
 	
 	//update upper bound
-	$("#usrXmax").change(function(){
+	inputXmax.on('input', function(){
 		xmax = parseFloat($(this).val());
-		updatePlot();
+		if(validateRange()){
+			checkTick();
+			updatePlot();
+		}
 	});
 	
 	//update lower bound
-	$("#usrXmin").change(function(){
+	inputXmin.on('input', function(){
 		xmin = parseFloat($(this).val());
-		updatePlot();
+		if(validateRange()){
+			checkTick();
+			updatePlot();
+		}
 	});
 	
 	//update tick
-	$("#usrXtick").on('input', function(){
-		xtick = parseFloat($(this).val());
-		if(xtick == 0){
+	inputXtick.on('input', function(){
+
+		realXtick = xtick = $(this).val();
+		
+		if(xtick == 0 || xtick == ''){
 			xtick = 1;
-			$(this).css("box-shadow", "0px 0px 5px 5px rgba(200,0,0,0.75)");
+			validate(inputXtick, false);
 		}else{
-			$(this).css("box-shadow", "none");
+			validate(inputXtick, true);	
+			realXtick = xtick = parseFloat(xtick);
 		}
+		
+		updateTick();
 		updatePlot();
 	});
-});
+	
+	//Bind the change of formula/polynomial input to change of graph
+	inputFormul.on('input', function updatePlotter(){
+		formula = this.value;
+		
+		if(checkFormula(formula)){
+			validate($(this), true);
+			updatePlot();
+			
+		}else{
+			validate($(this), false);
+		}
+	});
+}});
+

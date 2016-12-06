@@ -1,2 +1,23 @@
-<h1>Homepage</h1>
-<p>Some nice introtext</p>
+	<div class="col-md-12">
+		<h1>Home</h1>
+	</div>
+</div> <!-- .row -->
+
+<div class="row">
+	<div class="col-md-6">
+		<p>Welcome to Plot-a-Thing. Thank you for visiting this webapp! You can use this webapp to <%= link_to "plot", plotter_path %> any polynomial you want. This will give you nice graphs which will clearly indicate the shape of the graph for you!</p>
+		
+		<p>Before starting to plot, you can <%= link_to "read", about_path %> some information on how to use this plotter</p>
+	</div>
+	
+	<a href="<%= plotter_path %>"><div class="col-md-6 purple">
+		<h1>Start plotting!</h1>
+		<p>Click here to start plotting right away.</p>
+	</div></a>
+	
+</div>
+
+<div class="row">
+	<div class="col-md-12 gray">
+		<canvas id="introChart" width="400" height="200"></canvas>
+	</div>

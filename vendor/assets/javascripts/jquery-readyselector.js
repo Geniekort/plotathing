@@ -1,4 +1,6 @@
-(function ($) {
+var ready;
+ready = function ($) {
+	console.log("Ready");
   var ready = $.fn.ready;
   $.fn.ready = function (fn) {
     if (this.context === undefined) {
@@ -14,4 +16,7 @@
       }, this));
     }
   }
-})(jQuery);
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);

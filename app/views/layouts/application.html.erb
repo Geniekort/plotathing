@@ -3,39 +3,51 @@
 <head>
   <title>Plotathing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-<header class="navbar navbar-fixed-top <%= controller_name %> <%= action_name %>">
-	<div class="container">
-		<a id="logo">
-			plot-a-thing
-		</a>
-		
-		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sssr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-		
-		<nav role="navigation" class="navbar-default navbar-inner nav-collapse collapse">
-			<ul class="nav navbar-nav navbar-right">
-				<li><%= link_to "Home", root_path %></li>
-				<li><%= link_to "Plotter", plotter_path %></li>
-				<li><%= link_to "About", about_path %></li>
-			</ul>
-		</nav>
-	</div>
-</header>
+<body class = "<%= controller_name %> <%= action_name %>">
+<div class="container">
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a id="logo">
+					plot-a-thing
+				</a>
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				
+			</div>
+			<div id="navbar" class="navbar-collapse collapse navbar-right" aria-expanded="false" style="height: 0.8px;">
+				<ul class="nav navbar-nav">
+					<li><%= link_to "Home", root_path %></li>
+					<li><%= link_to "Plotter", plotter_path %></li>
+					<li><%= link_to "About", about_path %></li>
+				</ul>
+			</div><!--/.nav-collapse -->
+		</div><!--/.container-fluid -->
+	</nav>
+</div>
+	  
 <div class="container">
 	<div class="row">
 	<span class="icon-bar"></span>
 		<%= yield %>
 	</div>
+	
+	<hr>
 </div>
+<footer class="footer">
+	<div class="container">
+		<p class="text-right">2ID60 | &copy; <%= Time.now.year %> DNEVEL AVIDROKT</p>
+	</div>
+</footer>
 
 </body>
 </html>

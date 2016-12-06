@@ -9,6 +9,7 @@ $redish: #E8253B;
 
 body {
   padding-top: 60px;
+  font-family:  'Montserrat', sans-serif;
 }
 
 section {
@@ -26,9 +27,17 @@ textarea {
   }
 }
 
+table{
+	max-width:100%;
+}
+
+h2{
+	font-size: 21px !important;
+	color: inherit !important;
+}
 /* header */
 
-header{
+.navbar{
 	background-color: $blueish;
 	
 	
@@ -51,7 +60,7 @@ header{
 
 #logo {
   float: left;
-  margin-right: 10px;
+  margin: 0 10px;
   font-size: 1.7em;
   color: white;
   text-transform: uppercase;
@@ -65,8 +74,29 @@ header{
   }
 }
 
-/* container */
+/* Footer */
 
+hr{
+	color: $greyish;
+}
+
+
+/* containers */
+
+.red{
+	background-color: $redish;
+	color: $greyish;
+}
+
+.gray{
+	background-color: $greyish;
+	color: #000;
+}
+
+.purple{
+	background-color: $purple;
+	color: #000;
+}
 
 /* typography */
 
@@ -95,3 +125,24 @@ p {
   line-height: 1.7em;
 }
 
+/* plotter page */
+
+#usrFormula{
+	width: 70%;
+}
+
+.interval{
+	width:100px;
+}
+
+#myChart{
+	height:500px;
+}
+
+
+/* About page */
+
+.creditsImg{
+	max-width:100px;
+	max-height:100px;
+}
