@@ -13,7 +13,7 @@
 		<h2>Usage</h2>
 		<ul>
 			<li><p>Enter a formula</p></li>
-			<li><p>Enter a domain for your x</p></li>
+			<li><p>Enter a domain (upper and lower bound)</p></li>
 			<li><p>Enter a tick (step size)</p></li>
 			<li><p>Enjoy your graph!</p></li>
 		</ul>
@@ -24,7 +24,7 @@
 <div class="row">
 	<div class="col-md-6 purple">
 		<h2>Formulas</h2>
-		<p>Plot-A-Thing uses polynomials over x to create a graph. To interpret the input polynomial the plugin uses some plugins. This gives some constraints. For a list of all allowed functions and operations, please have a look into the "Functions" sections. Note that you are only allowed to use x as a variable, any other letter will result in an error.</p>
+		<p>Plot-A-Thing uses polynomials over x to create a graph. To interpret the input polynomial the plotter uses some plugins. This gives some constraints. For a list of all allowed functions and operations, please have a look into the "Functions" sections. Note that you are only allowed to use x as a variable, any other letter will result in an error.</p>
 	</div>
 	
 	<div class="col-md-6 ">
@@ -50,7 +50,7 @@
 		<ul class="col-md-6" >
 			<li>sin(x) - Sine</li>
 			<li>cos(x) - Cosine</li>
-			<li>tan(x) - Tangens</li>
+			<li>tan(x) - Tangent</li>
 			<li>abs(x) - Absolute value</li>
 			<li>floor(x) - Round to lower integer</li>
 			<li>ceil(x) - Round to upper integer</li>
@@ -61,7 +61,7 @@
 	
 	<div class="col-md-6 purple">
 		<h2>Credits</h2>
-		<p>Plot-A-Thing is build with help of the following frameworks and plugins:</p>
+		<p>Plot-A-Thing is created with help of the following frameworks and plugins:</p>
 		<%= link_to image_tag("bootstrap.png", :class => "creditsImg"), "http://www.getbootstrap.com", :target => "_blank" %>
 		<%= link_to image_tag("rails.svg",:class => "creditsImg") , "http://rubyonrails.org", :target => "_blank"%>
 		<%= link_to image_tag("mathjs.png", :class => "creditsImg"), "http://mathjs.org", :target => "_blank"%>
