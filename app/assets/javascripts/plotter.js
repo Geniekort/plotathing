@@ -1,16 +1,12 @@
 $(function(){if($("body").hasClass("plotter")){
 	/* initialization of variables */
-	var j = 0;
+	var j = 0;	
+	var xmin = -10, xmax = 10, xtick = 1, realXtick = xtick, formula = "x^2", maxNrPoints = 250;
+	var canvas = document.getElementById('myChart');
+	var ctx = canvas.getContext('2d');
+	var xPoints = [], yPoints = getScopeRange(-10,10,1);
 	
-	var xmin = -10, xmax = 10, xtick = 1, realXtick = xtick, formula = "x^2";
-	var maxNrPoints = 250;
-	
-	var canvas = document.getElementById('myChart'),
-	ctx = canvas.getContext('2d');
-	
-	var xPoints = [],
-	yPoints = getScopeRange(-10,10,1),
-	data = {
+	var data = {
 		labels : yPoints,
 		datasets: [{
             label: formula,
@@ -22,8 +18,9 @@ $(function(){if($("body").hasClass("plotter")){
             data: xPoints,
             spanGaps: false,
         }]
-	},
-	options ={		
+	};
+	
+	var options ={		
         hover: {
             // Overrides the global setting
             mode: 'x'
@@ -43,10 +40,10 @@ $(function(){if($("body").hasClass("plotter")){
 	}
 	});
 
-	var inputXmin = $("#usrXmin"),
-	inputXmax = $("#usrXmax"),
-	inputXtick = $("#usrXtick"),
-	inputFormul = $("#usrFormula");
+	var inputXmin = $("#usrXmin");
+	var inputXmax = $("#usrXmax");
+	var inputXtick = $("#usrXtick");
+	var inputFormul = $("#usrFormula");
 
 	inputXmin.val(xmin);
 	inputXmax.val(xmax);
@@ -86,7 +83,6 @@ $(function(){if($("body").hasClass("plotter")){
 		for(var i = xmin; i <= xmax; i += xtick) {
 			list.push(+i.toPrecision(5));
 		}
-		
 		
 		return list;
 	}
@@ -131,8 +127,6 @@ $(function(){if($("body").hasClass("plotter")){
 		if(!checkTick()){ //  Check number of nodes
 			xtick = Math.ceil((xmax-xmin) / maxNrPoints);
 		}
-		
-		
 		
 	}
 	
