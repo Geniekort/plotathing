@@ -12,7 +12,7 @@ gem 'jquery-rails', '4.1.1'
 #gem 'turbolinks',   '5.0.1'
 gem 'jbuilder',     '2.4.1'
 gem 'bootstrap-sass', '3.3.6'
-gem 'autoprefixer-rails'
+#gem 'autoprefixer-rails'
 gem 'jquery-ui-rails'
 #gem 'jquery-turbolinks'
 
