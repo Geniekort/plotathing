@@ -24,6 +24,7 @@ module Plotathing
     config.active_record.raise_in_transactional_callbacks = true
 	#to prevent some bug with bootstrap precompiling
 	config.assets.precompile += %w( alert.js )
+	config.assets.digest  = true
   end
 end
 
