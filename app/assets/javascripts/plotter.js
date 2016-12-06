@@ -78,7 +78,6 @@ $(function(){if($("body").hasClass("plotter")){
 	//Get the range from the xmin and xmax as an array
 	function getScopeRange(){
 		updateTick();
-		console.log(xtick);
 		var list = [];
 		for(var i = xmin; i <= xmax; i += xtick) {
 			list.push(+i.toPrecision(5));
