@@ -13,7 +13,7 @@ gem 'jquery-rails', '4.1.1'
 gem 'jbuilder',     '2.4.1'
 gem 'bootstrap-sass', '3.3.6'
 #gem 'autoprefixer-rails'
-#gem 'jquery-ui-rails'
+gem 'jquery-ui-rails'
 #gem 'jquery-turbolinks'
 
 # bundle exec rake doc:rails generates the API under doc/api.
